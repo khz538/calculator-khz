@@ -1,13 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 
-const Button = ({ label }) => {
-    const [] = useState('');
-
-    const handleClick = async e => {
-        e.preventDefault();
-        console.log(label);
-        console.log(typeof label)
-    }
+const Button = ({ label, handleClick }) => {
 
     return (
         <button onClick={handleClick} value={label} id={label}>{label}</button>
