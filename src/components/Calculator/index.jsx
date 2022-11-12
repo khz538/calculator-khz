@@ -7,17 +7,15 @@ const Calculator = () => {
     const [currentNumInput, setCurrentNumInput] = useState(0);
     const [displayVal, setDisplayVal] = useState('test');
     const [hasPressedOperator, setHasPressedOperator] = useState(false);
-    const numbers = [1,2,3,4,5,6,7,8,9,0];
-    const operators = ['+', '-', '*', '/'];
-    const buttonValues = ['AC', 'C', ...numbers, ...operators, '.', '=']
+
     const [row1, row2, row3, row4, row5] = [
         ['C', 'AC', '* -1', '/'],
         ['7', '8', '9', '*'],
         ['4', '5', '6', '-'],
         ['1', '2', '3', '+'],
         ['0', '.', '=']
-    ]
-    const buttons = {row1, row2, row3, row4, row5}
+    ];
+    const buttons = {row1, row2, row3, row4, row5};
 
     buttons.row1 = buttons.row1.map(label => {
         return (
@@ -56,6 +54,8 @@ const Calculator = () => {
                     {buttons.row2}
                     {buttons.row3}
                     {buttons.row4}
+                </div>
+                <div className="buttons" id="bottom-row">
                     {buttons.row5}
                 </div>
             </div>
