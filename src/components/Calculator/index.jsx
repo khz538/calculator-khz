@@ -2,43 +2,60 @@ import React, { useState, useContext } from "react";
 import Button from '../Button';
 
 const Calculator = () => {
-    const [displayVal, setDisplayVal] = useState('test');
-    const [hasPressedOperator, setHasPressedOperator] = useState(false);
-    const [operator, setOperator] = useState('');
-    const [result, setResult] = useState('');
-    const [prevOperand, setPrevOperand] = useState('');
-    const [nextOperand, setNextOperand] = useState('');
+    // const [displayVal, setDisplayVal] = useState('0');
+    // const [hasPressedOperator, setHasPressedOperator] = useState(false);
+    // const [operator, setOperator] = useState('');
+    // const [result, setResult] = useState('');
+    // const [prevOperand, setPrevOperand] = useState('');
+    // const [nextOperand, setNextOperand] = useState('');
+    // const [isDecimal, setIsDecimal] = useState(false);
 
-    const handleClick = e => {
-        e.preventDefault();
-        const button = e.target.value;
-        // handle clear functions
-        switch (button) {
-            case 'C': {
-                setDisplayVal('');
-                if (hasPressedOperator && !nextOperand) setHasPressedOperator(false);
-                else if (hasPressedOperator && nextOperand) setNextOperand('');
-                else if (prevOperand && !hasPressedOperator) setPrevOperand('');
+    // const handleClick = e => {
+    //     e.preventDefault();
+    //     const button = e.target.value;
+    //     // handle clear functions
+    //     switch (button) {
+    //         case 'C': {
+    //             setDisplayVal('0');
+    //             if (hasPressedOperator && !nextOperand) setHasPressedOperator(false);
+    //             else if (hasPressedOperator && nextOperand) setNextOperand('');
+    //             else if (prevOperand && !hasPressedOperator) setPrevOperand('');
 
-            };
-            case 'AC': {
-                setDisplayVal('');
-                setOperator('');
-                setNextOperand('');
-                setPrevOperand('');
-                setResult('');
-            };
-            case '* -1': {
-                
-            }
-            case '=': {
-                setResult(eval())
-            }
-            default: {
+    //         };
+    //         case 'AC': {
+    //             setDisplayVal('0');
+    //             setOperator('');
+    //             setNextOperand('');
+    //             setPrevOperand('');
+    //             setResult('');
+    //         };
+    //         case '* -1': {
 
-            }
-        }
-    }
+    //         }
+    //         case '=': {
+    //             nextOperand ? setResult(eval(`${prevOperand}${operator}${nextOperand}`)) : setResult(prevOperand);
+    //             setDisplayVal(result)
+    //         }
+    //         case '.': {
+    //             if (!isDecimal) {
+    //                 if (!hasPressedOperator) {
+    //                     setPrevOperand(prevOperand + button)
+    //                 } else {
+    //                     setNextOperand(nextOperand + button)
+    //                 }
+    //             }
+    //         }
+    //         default: {
+    //             if (hasPressedOperator) {
+    //                 setNextOperand(nextOperand + button)
+    //                 setDisplayVal(nextOperand)
+    //             } else {
+    //                 setPrevOperand(prevOperand + button)
+    //                 setDisplayVal(prevOperand)
+    //             }
+    //         }
+    //     }
+    // }
 
     const [row1, row2, row3, row4, row5] = [
         ['C', 'AC', '* -1', '/'],
