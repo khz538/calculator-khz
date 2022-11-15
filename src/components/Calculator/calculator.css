@@ -1,9 +1,18 @@
-body{
-    margin: 0;
-}
-
 *, *::before, *::after {
     box-sizing: border-box;
+}
+
+#root {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
+  }
+
+.grid-container {
+    display: grid;
+    /* grid-template-rows: minmax(2em, auto); */
+    grid-template-rows: auto;
 }
 
 .buttons {
@@ -11,6 +20,34 @@ body{
     grid-template-columns: repeat(4, 1fr);
 }
 
-#id0 {
-    grid-column: 1 / span 2
+/* #id0 {
+    grid-column: 1 / span 2;
+} */
+
+.display {
+    display: flex;
+    flex-flow: column;
+    align-items: flex-end;
+    justify-content: space-between;
+    background-color: black;
+    grid-column: 1 / -1;
+}
+
+.display .input {
+    color: lightgrey;
+    font-size: small;
+    min-height: 2em;
+}
+
+.display .output {
+    color: white;
+    font-size: larger;
+    min-height: 2em;
+}
+
+.input > input {
+    border: none;
+    background-color: transparent;
+    height: 3em;
+    text-align: right;
 }
