@@ -1,4 +1,6 @@
 # Simple Calculator
+
+## [Live Link](https://calculator-khz.vercel.app/)
 ## Instructions
 1. Clone this repository to your local environment
 2. If npm is not installed, please [follow instructions here](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) to install it
