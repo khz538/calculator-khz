@@ -14,7 +14,8 @@ const Calculator = () => {
         while (str.length > 1 && str[0] === '0') {
             str = str.slice(1);
         }
-        return parseNum(str)
+        // while (str.includes('.') && str.length > 1)
+        return parseNum(str);
     }
 
     const handleClick = e => {
@@ -27,10 +28,11 @@ const Calculator = () => {
                 expression = parseExpression(expression);
                 try {
                     res = new Function(`return ${expression}`)().toString();
-                    console.log(res)
+                    res = Number(parseFloat(res).toPrecision(7)).toString();
+                    // console.log(res)
                     // res = eval(expression).toString();
                 } catch (error) { // If expression invalid, display an error
-                    res = 'Invalid Expression'
+                    res = 'Invalid Expression';
                 }
                 // Set display out to the evaluated result or return invalid
                 setOutput(res);
@@ -49,7 +51,7 @@ const Calculator = () => {
             }
             case '1':case '2':case '3':case '4':case '5':case '6':case '7':case '8':case '9':case '0':case '(':case ')':case '*':case '+': case '-':case '.': {
                 let res = input;
-                if (!res.length) setInput('');
+                // if (!res.length) setInput('');
                 setOutput('');
                 setInput(res += button);
                 break;
@@ -62,10 +64,6 @@ const Calculator = () => {
             }
         }
 
-    }
-
-    const handleChange = e => {
-        setInput(e.target.value);
     }
 
     useEffect(() => {
