@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import './calculator.css'
 
-// const operators = ['+', '-', '÷', '*', '(', ')'];
+const operators = ['+', '-', '/', '*', '**'];
 // const nums = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
 
 const Calculator = () => {
@@ -11,10 +11,11 @@ const Calculator = () => {
 
     const parseNum = str => str.replace(/\d*(\.\d+)?/g, n => n && +n);
     const parseExpression = str => {
-        while (str.length > 1 && str[0] === '0') {
-            str = str.slice(1);
-        }
-        // while (str.includes('.') && str.length > 1)
+        // check last char is operator--if so, chop off to allow evaluation
+        console.log(str.slice(0, -1))
+        console.log(str.slice(0, -2))
+        if (operators.includes(str[str.length - 2] + str[str.length - 1])) return parseNum(str.slice(0, -2));
+        else if (operators.includes(str[str.length - 1])) return parseNum(str.slice(0, -1));
         return parseNum(str);
     }
 
