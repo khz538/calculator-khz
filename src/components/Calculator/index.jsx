@@ -7,7 +7,7 @@ import './calculator.css'
 const Calculator = () => {
     const [input, setInput] = useState('');
     const [output, setOutput] = useState('');
-    // const [hasEvaluated, setHasEvaluated] = useState(false);
+    const [hasEvaluated, setHasEvaluated] = useState(false);
 
     const parseNum = str => str.replace(/\d*(\.\d+)?/g, n => n && +n);
     const parseExpression = str => {
@@ -29,7 +29,6 @@ const Calculator = () => {
                 try {
                     res = new Function(`return ${expression}`)().toString();
                     res = Number(parseFloat(res).toPrecision(7)).toString();
-                    // console.log(res)
                     // res = eval(expression).toString();
                 } catch (error) { // If expression invalid, display an error
                     res = 'Invalid Expression';
@@ -37,38 +36,56 @@ const Calculator = () => {
                 // Set display out to the evaluated result or return invalid
                 setOutput(res);
                 setInput(res);
+                setHasEvaluated(true)
                 break;
             };
             case '^': {
                 let res = input;
                 setInput(res += '**');
+                setHasEvaluated(false)
                 break;
             }
             case 'C': {
                 setInput("");
                 setOutput("");
+                setHasEvaluated(false)
                 break;
             }
-            case '1':case '2':case '3':case '4':case '5':case '6':case '7':case '8':case '9':case '0':case '(':case ')':case '*':case '+': case '-':case '.': {
-                let res = input;
-                // if (!res.length) setInput('');
-                setOutput('');
-                setInput(res += button);
-                break;
+            case '1':case '2':case '3':case '4':case '5':case '6':case '7':case '8':case '9':case '0':case '(':case ')':case '.': {
+                if (hasEvaluated) {
+                    setHasEvaluated(false);
+                    let res = '';
+                    setOutput('');
+                    setInput(res += button);
+                    break;
+                } else {
+                    let res = input;
+                    setOutput('');
+                    setInput(res += button);
+                    break;
+                }
             }
             case '÷': {
                 setOutput('');
                 let res = input;
                 setInput(res += '/');
+                setHasEvaluated(false)
+                break;
+            }
+            case '*':case '+': case '-': {
+                let res = input;
+                setOutput('');
+                setInput(res += button);
+                setHasEvaluated(false);
                 break;
             }
         }
 
     }
 
-    useEffect(() => {
-        console.log(input, output)
-    })
+    // useEffect(() => {
+    //     console.log(input, output)
+    // })
 
     const [row1, row2, row3, row4, row5] = [
         ['C', '(', ')', '÷'],
