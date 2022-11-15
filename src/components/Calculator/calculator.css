@@ -1,4 +1,16 @@
+body{
+    margin: 0;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
 .buttons {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+}
+
+#id0 {
+    grid-column: 1 / span 2
 }
