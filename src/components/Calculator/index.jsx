@@ -8,7 +8,7 @@ const Calculator = () => {
     const [input, setInput] = useState('');
     const [output, setOutput] = useState('');
     // const [hasEvaluated, setHasEvaluated] = useState(false);
-    
+
     const parseNum = str => str.replace(/\d*(\.\d+)?/g, n => n && +n);
     const parseExpression = str => {
         while (str.length > 1 && str[0] === '0') {
@@ -26,8 +26,9 @@ const Calculator = () => {
                 let expression = input;
                 expression = parseExpression(expression);
                 try {
-                    res = new Function(`return ${expression}`)();
-                    res = eval(expression).toString();
+                    res = new Function(`return ${expression}`)().toString();
+                    console.log(res)
+                    // res = eval(expression).toString();
                 } catch (error) { // If expression invalid, display an error
                     res = 'Invalid Expression'
                 }
@@ -46,10 +47,17 @@ const Calculator = () => {
                 setOutput("");
                 break;
             }
-            case '1':case '2':case '3':case '4':case '5':case '6':case '7':case '8':case '9':case '0':case '(':case ')':case '*':case '+': case '-': case '÷':case '.': {
+            case '1':case '2':case '3':case '4':case '5':case '6':case '7':case '8':case '9':case '0':case '(':case ')':case '*':case '+': case '-':case '.': {
+                let res = input;
+                if (!res.length) setInput('');
+                setOutput('');
+                setInput(res += button);
+                break;
+            }
+            case '÷': {
                 setOutput('');
                 let res = input;
-                setInput(res += button);
+                setInput(res += '/');
                 break;
             }
         }
@@ -84,7 +92,7 @@ const Calculator = () => {
             <div className="grid-container">
                 <div className="display">
                     <div className="input">
-                        <input value={input} type='text' onChange={handleChange}></input>
+                        {input}
                     </div>
                     <div className="output">
                         {output}
