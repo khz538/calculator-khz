@@ -27,7 +27,7 @@ const Calculator = () => {
                 expression = parseExpression(expression);
                 try {
                     res = new Function(`return ${expression}`)().toString();
-                    res = Number(parseFloat(res).toPrecision(7)).toString();
+                    res = Number(parseFloat(res).toPrecision(15)).toString();
                     // res = eval(expression).toString();
                 } catch (error) { // If expression invalid, display an error
                     res = 'Invalid Expression';
