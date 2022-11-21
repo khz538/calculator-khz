@@ -9,7 +9,10 @@ const Calculator = () => {
     const [output, setOutput] = useState('');
     const [hasEvaluated, setHasEvaluated] = useState(false);
 
+
     const parseNum = str => str.replace(/\d*(\.\d+)?/g, n => n && +n);
+
+
     const parseExpression = str => {
         // check last char is operator--if so, chop off to allow evaluation
         if (operators.includes(str[str.length - 2] + str[str.length - 1])) return parseNum(str.slice(0, -2));
@@ -25,13 +28,19 @@ const Calculator = () => {
                 let res;
                 let expression = input;
                 expression = parseExpression(expression);
+
+                // if (checkExpression(expression))
+                // checkExpression(expression);
+                // console.log('expression checked')
                 try {
                     res = new Function(`return ${expression}`)().toString();
-                    res = Number(parseFloat(res).toPrecision(15)).toString();
+                    res = BigInt(parseFloat(res).toPrecision(15)).toString();
                     // res = eval(expression).toString();
                 } catch (error) { // If expression invalid, display an error
-                    res = 'Invalid Expression';
+                    res = 'Invalid Expression'
+
                 }
+
                 // Set display out to the evaluated result or return invalid
                 setOutput(res);
                 setInput(res);
