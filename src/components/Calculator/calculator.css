@@ -13,6 +13,8 @@
     display: grid;
     /* grid-template-rows: minmax(2em, auto); */
     grid-template-rows: auto;
+    width: 20vw;
+    /* height:30vh; */
 }
 
 .buttons {
