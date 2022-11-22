@@ -34,7 +34,7 @@ const Calculator = () => {
                 // console.log('expression checked')
                 try {
                     res = new Function(`return ${expression}`)().toString();
-                    res = BigInt(parseFloat(res).toPrecision(15)).toString();
+                    res = Number(parseFloat(res).toPrecision(15)).toString();
                     // res = eval(expression).toString();
                 } catch (error) { // If expression invalid, display an error
                     res = 'Invalid Expression'
