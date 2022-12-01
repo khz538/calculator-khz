@@ -10,7 +10,7 @@ const Calculator = () => {
     const [hasEvaluated, setHasEvaluated] = useState(false);
 
 
-    const parseNum = str => str.replace(/\d*(\.\d+)?/g, n => n && +n);
+    const parseNum = str => str.replace(/\d*(\.\d+)?/g, n => n && +n); // check if input is numerical
 
 
     const parseExpression = str => {
