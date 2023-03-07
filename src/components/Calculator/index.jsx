@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import calculate from "../../utils/calculate";
 import './calculator.css'
 
 const operators = ['+', '-', '/', '*', '**'];
@@ -10,7 +11,7 @@ const Calculator = () => {
     const [hasEvaluated, setHasEvaluated] = useState(false);
 
 
-    const parseNum = str => str.replace(/\d*(\.\d+)?/g, n => n && +n);
+    const parseNum = str => str.replace(/\d*(\.\d+)?/g, n => n && +n); // check if input is numerical
 
 
     const parseExpression = str => {
@@ -25,17 +26,18 @@ const Calculator = () => {
         switch (button) {
             // When pressing equal button, try to evaluate the expression
             case '=': {
-                let res;
-                let expression = input;
+                let res,
+                expression = input;
                 expression = parseExpression(expression);
 
                 // if (checkExpression(expression))
                 // checkExpression(expression);
                 // console.log('expression checked')
                 try {
-                    res = new Function(`return ${expression}`)().toString();
-                    res = Number(parseFloat(res).toPrecision(15)).toString();
+                    // res = new Function(`return ${expression}`)().toString();
+                    // res = Number(parseFloat(res).toPrecision(15)).toString();
                     // res = eval(expression).toString();
+                    res = calculate(expression);
                 } catch (error) { // If expression invalid, display an error
                     res = 'Invalid Expression'
 
@@ -91,9 +93,6 @@ const Calculator = () => {
 
     }
 
-    // useEffect(() => {
-    //     console.log(input, output)
-    // })
 
     const [row1, row2, row3, row4, row5] = [
         ['C', '(', ')', '÷'],
