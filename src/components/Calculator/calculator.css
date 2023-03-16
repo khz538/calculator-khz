@@ -13,18 +13,22 @@
     display: grid;
     /* grid-template-rows: minmax(2em, auto); */
     grid-template-rows: auto;
-    width: 20vw;
+    width: 300px;
     /* height:30vh; */
 }
 
+#id61 { grid-area: idEquals; }
+
 .buttons {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-areas:
+    "idClear idOpenParen idCloseParen idDivide"
+    "id7 id8 id9 idMultiply"
+    "id4 id5 id6 idSubtract"
+    "id1 id2 id3 idAdd"
+    "id0 id0 idEquals idEquals";
 }
-
-/* #id0 {
-    grid-column: 1 / span 2;
-} */
 
 .display {
     display: flex;
@@ -53,3 +57,9 @@
     height: 3em;
     text-align: right;
 }
+
+/* .buttons > #id61 {
+    border: 1px solid white;
+    display: grid;
+    grid-template-columns: 2fr;
+} */

@@ -105,10 +105,16 @@ const Calculator = () => {
     const buttons = {row1, row2, row3, row4, row5};
 
     for (let row in buttons) {
-        buttons[row] = buttons[row].map(label =>
-            <button key={label} onClick={handleClick} value={label} id={`id${label}`}>{label}</button>
+        buttons[row] = buttons[row].map((label, i, arr) =>
+            <button key={label} onClick={handleClick} value={label} id={`id${label.charCodeAt()}`}>{label}</button>
         )
     }
+
+
+
+    useEffect(() => {
+        console.log(buttons)
+    }, [])
 
     return (
         <>
