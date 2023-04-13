@@ -108,13 +108,7 @@ const Calculator = () => {
         buttons[row] = buttons[row].map((label, i, arr) =>
             <button key={label} onClick={handleClick} value={label} id={`id${label.charCodeAt()}`}>{label}</button>
         )
-    }
-
-
-
-    useEffect(() => {
-        console.log(buttons)
-    }, [])
+    };
 
     return (
         <>
