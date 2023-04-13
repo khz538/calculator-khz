@@ -33,15 +33,13 @@ const calculate = s => {
                         prevSum *= num;
                         break;
                     case '/':
-						// never use parseInt directly to truncate the division result
-						// see: https://2ality.com/2013/01/parseint.html
                         prevSum = ~~(prevSum / num);
                         break;
                     default:
                         break;
                 }
 
-                if(char === ')') {
+                if (char === ')') {
                     break;
                 }
 
